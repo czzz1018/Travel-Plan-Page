@@ -4,12 +4,12 @@
   "config": {
     "schemaVersion": "1.0.0",
     "modules": {
-      "flights": false,
-      "overview": false,
-      "itinerary": false,
-      "todo": false,
-      "driving": false,
-      "ledger": false
+      "flights": true,
+      "overview": true,
+      "itinerary": true,
+      "todo": true,
+      "driving": true,
+      "ledger": true
     },
     "language": "zh-CN",
     "persistence": {
@@ -17,73 +17,215 @@
     }
   },
   "metadata": {
-    "tripId": "unconfigured",
-    "title": "旅行计划",
+    "tripId": "yunandrive-20260915",
+    "title": "云南自驾 大理·丽江·香格里拉 2026-09-15 → 2026-09-22",
     "language": "zh-CN",
     "assets": {}
   },
   "trip": {
-    "status": "uninitialized",
-    "startDate": null,
-    "endDate": null,
-    "dayCount": 0,
-    "nightCountAway": 0,
-    "countries": [],
-    "primaryDestinationCountries": [],
-    "citiesAndAreas": [],
-    "routeSummary": "",
-    "groupSize": null
+    "status": "draft",
+    "startDate": "2026-09-15",
+    "endDate": "2026-09-22",
+    "dayCount": 8,
+    "nightCountAway": 7,
+    "countries": ["CN"],
+    "primaryDestinationCountries": ["CN"],
+    "citiesAndAreas": ["昆明","大理","丽江","香格里拉"],
+    "routeSummary": "昆明 → 大理 → 丽江 → 香格里拉 → 昆明，自驾",
+    "groupSize": 2
   },
-  "flightJourneys": [],
-  "flights": [],
-  "accommodations": [],
+  "flightJourneys": [
+    {
+      "id": "journey-1",
+      "title": "出发航班",
+      "notes": "航班号待补充"
+    }
+  ],
+  "flights": [
+    {
+      "id": "f1",
+      "journeyId": "journey-1",
+      "sequence": 1,
+      "airline": { "name": "待补充" },
+      "flightNumber": "待补充",
+      "departure": {
+        "airportCode": "FOC",
+        "city": "福州 (长乐)",
+        "date": "2026-09-15",
+        "time": "11:40"
+      },
+      "arrival": {
+        "airportCode": "KMG",
+        "city": "昆明 (长水)",
+        "date": "2026-09-15",
+        "time": "14:50"
+      },
+      "duration": "03:10"
+    }
+  ],
+  "accommodations": [
+    {
+      "id": "hotel-kunming-1",
+      "name": "昆明站北广场亚朵酒店",
+      "notes": "公共停车场；酒店内慢充；免费停车（用户提供信息）。"
+    },
+    {
+      "id": "hotel-dali-1",
+      "name": "阿凯缇娅·安止樱落",
+      "phone": "13368725648",
+      "notes": "提供免费停车场，管家会发定位指引。"
+    },
+    {
+      "id": "hotel-lijiang-1",
+      "name": "曼辰Mansion侘寂美学·花园度假酒店 (丽江古城南门木府店)",
+      "notes": "私人停车场；酒店内充电桩（快充/慢充）。"
+    },
+    {
+      "id": "hotel-shangrila-1",
+      "name": "CRUE库里蓝屿川典藏·供氧观景酒店",
+      "notes": "私人停车场；酒店内充电快充/慢充。"
+    }
+  ],
   "groundTransport": {
-    "rentalCar": null,
+    "rentalCar": {
+      "company": "阿维塔07",
+      "orderPlaced": "2026-09-09T15:00:54",
+      "pickup": { "date": "2026-09-15", "time": "15:30", "location": "昆明长水机场服务点" },
+      "dropoff": { "date": "2026-09-22", "time": "19:00", "location": "昆明长水机场服务点" },
+      "price": { "amount": 1675, "currency": "CNY" },
+      "status": "待取车",
+      "notes": "截图来源：用户提供。"
+    },
     "rentalChecklist": [],
     "drivingNotes": [],
     "drivingReferenceLinks": [],
     "plannedRoadLegs": [],
     "publicTransitAndRail": []
   },
-  "days": [],
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-09-15",
+      "title": "抵达昆明 · 取车 · 市区短途游",
+      "locations": ["昆明长水机场","昆明站北广场亚朵酒店","昆明老街","黄公东街","翠湖公园","文化巷","文林街"],
+      "schedule": [
+        { "id": "d1-s1", "time": "11:40", "type": "transport", "text": "从福州长乐机场出发（航班号待补充）" },
+        { "id": "d1-s2", "time": "14:50", "type": "transport", "text": "抵达昆明长水机场" },
+        { "id": "d1-s3", "time": "15:30", "type": "transport", "text": "取车（昆明长水机场服务点）" },
+        { "id": "d1-s4", "time": "15:30-16:00", "type": "transport", "text": "自驾前往昆明站北广场亚朵酒店（车程约30分钟，路费￥10）" },
+        { "id": "d1-s5", "time": "16:00-16:20", "type": "stay", "text": "酒店放行李 / 办理入住（若提前办理则在此项注明）" },
+        { "id": "d1-s6", "time": "16:20", "type": "attraction", "text": "出发打卡昆明老街、纸片楼（约15分钟）" },
+        { "id": "d1-s7", "time": "16:40", "type": "attraction", "text": "步行至黄公东街网红黄墙打卡" },
+        { "id": "d1-s8", "time": "17:40", "type": "attraction", "text": "逛翠湖公园（免费环湖）" },
+        { "id": "d1-s9", "time": "18:40", "type": "attraction", "text": "逛文化巷与文林街" }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-09-16",
+      "title": "昆明 → 大理（自驾/交通） · 大理游览",
+      "locations": ["昆明站北广场亚朵酒店","阿凯缇娅·安止樱落","双廊","文笔村"],
+      "schedule": [
+        { "id": "d2-s1", "time": "08:00", "type": "transport", "text": "酒店出发前往大理（可选车次/路线：A: 3h40 ￥305；B: 3h58 ￥203），预计到达时间约 11:55（视车次而定）" },
+        { "id": "d2-s2", "time": "中午/下午", "type": "stay", "text": "入住 阿凯缇娅·安止樱落（酒店提供免费公共停车场，管家会发定位）" },
+        { "id": "d2-s3", "time": "下午", "type": "food", "text": "古镇午餐（推荐：玫瑰乳扇等）；可选择南诏风情岛（双廊码头乘船往返47元/人，含船票与门票）" },
+        { "id": "d2-s4", "time": "傍晚", "type": "attraction", "text": "文笔村/渔灯夜游（建议19:30之后）" }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-09-17",
+      "title": "大理：双廊 · 喜洲 · 大理古镇",
+      "locations": ["双廊古镇","喜洲古镇","大理古镇"],
+      "schedule": [
+        { "id": "d3-s1", "time": "全天", "type": "attraction", "text": "双廊、喜洲、廊桥、S弯、龙龛码头、扎染体验（可选）" }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-09-18",
+      "title": "大理 → 丽江（自驾）",
+      "locations": ["阿凯缇娅·安止樱落","曼辰Mansion（丽江）"],
+      "schedule": [
+        { "id": "d4-s1", "time": "09:30", "type": "transport", "text": "出发前往丽江（驾车时长约 1h36m，路费￥74），预计到达 11:10" },
+        { "id": "d4-s2", "time": "中午/下午", "type": "stay", "text": "入住 曼辰Mansion 侘寂美学·花园度假酒店（私人停车场）" }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-09-19",
+      "title": "丽江 → 香格里拉 · 虎跳峡游览",
+      "locations": ["曼辰Mansion","虎跳峡","CRUE库里蓝屿川典藏·供氧观景酒店"],
+      "schedule": [
+        { "id": "d5-s1", "time": "08:00", "type": "transport", "text": "出发前往虎跳峡（车程约1h18m，路费￥38），预计到达 09:20" },
+        { "id": "d5-s2", "time": "09:20-11:00", "type": "attraction", "text": "虎跳峡游览（门票现场购票，成人45元/人，凭身份证）" },
+        { "id": "d5-s3", "time": "11:00", "type": "transport", "text": "前往 CRUE 库里蓝屿川典藏·供氧观景酒店（约1h36m，路费￥42）" },
+        { "id": "d5-s4", "time": "下午", "type": "stay", "text": "入住酒店并用午餐（阿珂顿巴餐厅）" }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2026-09-20",
+      "title": "普拉措国家公园 / 长江第一湾（可选）",
+      "locations": ["普拉措国家公园","长江第一湾"],
+      "schedule": [
+        { "id": "d6-s1", "time": "09:00", "type": "attraction", "text": "普拉措国家公园游览（建议游玩约3小时）" }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "2026-09-21",
+      "title": "丽江 · 玉龙雪山",
+      "locations": ["玉龙雪山","丽江雪川游客服务中心","冰川公园"],
+      "schedule": [
+        { "id": "d7-s1", "time": "08:00", "type": "transport", "text": "前往玉龙雪山（车程约25min），建议导航至 丽江雪川游客服务中心" },
+        { "id": "d7-s2", "time": "12:05-13:15", "type": "attraction", "text": "冰川公园（大索道下站，海拔约4680m），高海拔请注意保暖与防高反" }
+      ]
+    },
+    {
+      "day": 8,
+      "date": "2026-09-22",
+      "title": "返回昆明 · 还车 · 返程航班",
+      "locations": ["昆明长水机场"],
+      "schedule": [
+        { "id": "d8-s1", "time": "",
+          "type": "transport",
+          "text": "还车于昆明长水机场服务点（2026-09-22 19:00）；返程航班信息待补充。"
+        }
+      ]
+    }
+  ],
   "places": [],
   "restaurants": [],
   "bookingsAndTickets": [],
   "ticketPlanning": {
     "statusStorage": "local",
     "statusStorageNote": "门票状态默认只保存在当前浏览器。",
-    "items": []
+    "items": [
+      { "id": "t1", "name": "南诏风情岛（双廊）", "day": 2, "requirement": "往返船票+门票，约47 CNY/人，现场购票/可预订" },
+      { "id": "t2", "name": "虎跳峡门票", "day": 5, "requirement": "现场凭身份证购票，成人45 CNY/人" }
+    ]
   },
   "preTrip": {
-    "packingItems": [],
+    "packingItems": [
+      { "id": "p1", "text": "购买氧气瓶（昆明/行程地）", "completed": false }
+    ],
     "preparationsExplicitlyMentioned": [],
-    "missingNote": ""
+    "missingNote": "部分航班号、部分酒店入住/退房时间与部分门票预订状态待补充。"
   },
   "mapLinks": {
     "providedGoogleMapsLinks": [],
     "note": "",
     "cityLevelNavigationDisabled": false,
     "navigationPolicy": {
-      "noNavigationTypes": [
-        "flight",
-        "note",
-        "rest"
-      ],
-      "selfNavigationTypes": [
-        "drive",
-        "return",
-        "transfer",
-        "check-in",
-        "check-out",
-        "restaurant",
-        "attraction",
-        "walk",
-        "hike"
-      ]
+      "noNavigationTypes": ["flight","note","rest"],
+      "selfNavigationTypes": ["drive","return","transfer","check-in","check-out","restaurant","attraction","walk","hike"]
     },
     "navigationPlaces": []
   },
-  "issuesAndUncertainties": [],
+  "issuesAndUncertainties": [
+    "未提供出发/返程航班号；9/16 昆明→大理交通方式（已列为可选）；部分酒店入住/退房精确时间；地图经纬度待补充。"
+  ],
   "map": {
     "schemaVersion": "1.0-lite",
     "mapMode": "template-auto",
@@ -92,5 +234,11 @@
     "places": [],
     "routes": [],
     "dailyRoutes": []
+  },
+  "ledger": {
+    "entries": [
+      { "id": "l1", "date": "2026-09-15", "amount": 10, "currency": "CNY", "category": "road_fee", "description": "昆明 15:30 自驾路费", "paid": false },
+      { "id": "l2", "date": "2026-09-15", "amount": 1675, "currency": "CNY", "category": "rental_car", "description": "租车订单 阿维塔07", "paid": true }
+    ]
   }
 }
