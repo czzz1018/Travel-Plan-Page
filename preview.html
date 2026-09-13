@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>旅行页面预览 — 云南自驾 2026-09-15 → 2026-09-22</title>
+  <style>
+    body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:20px; color:#222}
+    header{border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:18px}
+    h1{margin:0;font-size:20px}
+    .meta{color:#666;margin-top:6px}
+    .section{margin-top:18px}
+    .card{border:1px solid #eee;border-radius:8px;padding:12px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+    .row{display:flex;gap:10px;align-items:center}
+    .pill{background:#f5f7fa;border-radius:999px;padding:4px 8px;color:#333;font-size:13px}
+    dt{font-weight:600}
+    dd{margin:0 0 8px 0}
+    pre{background:#f8f8f8;padding:8px;border-radius:6px;overflow:auto}
+    .day{margin-bottom:12px}
+    .small{color:#666;font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">旅行页面预览</h1>
+    <div class="meta" id="dates">—</div>
+  </header>
+
+  <main>
+    <section class="section card" id="flights">
+      <h2>航班</h2>
+      <div id="flights-content"></div>
+    </section>
+
+    <section class="section card" id="rental">
+      <h2>租车</h2>
+      <div id="rental-content"></div>
+    </section>
+
+    <section class="section card" id="accommodations">
+      <h2>住宿</h2>
+      <div id="accom-content"></div>
+    </section>
+
+    <section class="section card" id="itinerary">
+      <h2>每日行程</h2>
+      <div id="days-content"></div>
+    </section>
+
+    <section class="section card" id="tickets">
+      <h2>门票与票务草稿</h2>
+      <div id="tickets-content"></div>
+    </section>
+
+    <section class="section card" id="ledger">
+      <h2>记账（草稿）</h2>
+      <div id="ledger-content"></div>
+    </section>
+
+    <section class="section small" id="notes">
+      <p>说明：此为静态预览，由 trip-data.json 草稿生成。航班号与部分细节标为“待补充”。如需更新，请在仓库中修改 trip-data.json。</p>
+    </section>
+  </main>
+
+  <script>
+    // Trip data inlined from trip-data.json (snapshot)
+    const TRIP = {
+  "$schema": "./schemas/trip-data.schema.json",
+  "schemaVersion": "2.0-lite",
+  "config": {
+    "schemaVersion": "1.0.0",
+    "modules": {
+      "flights": true,
+      "overview": true,
+      "itinerary": true,
+      "todo": true,
+      "driving": true,
+      "ledger": true
+    },
+    "language": "zh-CN",
+    "persistence": {
+      "mode": "local"
+    }
+  },
+  "metadata": {
+    "tripId": "yunandrive-20260915",
+    "title": "云南自驾 大理·丽江·香格里拉 2026-09-15 → 2026-09-22",
+    "language": "zh-CN",
+    "assets": {}
+  },
+  "trip": {
+    "status": "draft",
+    "startDate": "2026-09-15",
+    "endDate": "2026-09-22",
+    "dayCount": 8,
+    "nightCountAway": 7,
+    "countries": ["CN"],
+    "primaryDestinationCountries": ["CN"],
+    "citiesAndAreas": ["昆明","大理","丽江","香格里拉"],
+    "routeSummary": "昆明 → 大理 → 丽江 → 香格里拉 → 昆明，自驾",
+    "groupSize": 2
+  },
+  "flightJourneys": [
+    {
+      "id": "journey-1",
+      "title": "出发航班",
+      "notes": "航班号待补充"
+    }
+  ],
+  "flights": [
+    {
+      "id": "f1",
+      "journeyId": "journey-1",
+      "sequence": 1,
+      "airline": { "name": "待补充" },
+      "flightNumber": "待补充",
+      "departure": {
+        "airportCode": "FOC",
+        "city": "福州 (长乐)",
+        "date": "2026-09-15",
+        "time": "11:40"
+      },
+      "arrival": {
+        "airportCode": "KMG",
+        "city": "昆明 (长水)",
+        "date": "2026-09-15",
+        "time": "14:50"
+      },
+      "duration": "03:10"
+    }
+  ],
+  "accommodations": [
+    {
+      "id": "hotel-kunming-1",
+      "name": "昆明站北广场亚朵酒店",
+      "notes": "公共停车场；酒店内慢充；免费停车（用户提供信息）。"
+    },
+    {
+      "id": "hotel-dali-1",
+      "name": "阿凯缇娅·安止樱落",
+      "phone": "13368725648",
+      "notes": "提供免费停车场，管家会发定位指引。"
+    },
+    {
+      "id": "hotel-lijiang-1",
+      "name": "曼辰Mansion侘寂美学·花园度假酒店 (丽江古城南门木府店)",
+      "notes": "私人停车场；酒店内充电桩（快充/慢充）。"
+    },
+    {
+      "id": "hotel-shangrila-1",
+      "name": "CRUE库里蓝屿川典藏·供氧观景酒店",
+      "notes": "私人停车场；酒店内充电快充/慢充。"
+    }
+  ],
+  "groundTransport": {
+    "rentalCar": {
+      "company": "阿维塔07",
+      "orderPlaced": "2026-09-09T15:00:54",
+      "pickup": { "date": "2026-09-15", "time": "15:30", "location": "昆明长水机场服务点" },
+      "dropoff": { "date": "2026-09-22", "time": "19:00", "location": "昆明长水机场服务点" },
+      "price": { "amount": 1675, "currency": "CNY" },
+      "status": "待取车",
+      "notes": "截图来源：用户提供。"
+    },
+    "rentalChecklist": [],
+    "drivingNotes": [],
+    "drivingReferenceLinks": [],
+    "plannedRoadLegs": [],
+    "publicTransitAndRail": []
+  },
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-09-15",
+      "title": "抵达昆明 · 取车 · 市区短途游",
+      "locations": ["昆明长水机场","昆明站北广场亚朵酒店","昆明老街","黄公东街","翠湖公园","文化巷","文林街"],
+      "schedule": [
+        { "id": "d1-s1", "time": "11:40", "type": "transport", "text": "从福州长乐机场出发（航班号待补充）" },
+        { "id": "d1-s2", "time": "14:50", "type": "transport", "text": "抵达昆明长水机场" },
+        { "id": "d1-s3", "time": "15:30", "type": "transport", "text": "取车（昆明长水机场服务点）" },
+        { "id": "d1-s4", "time": "15:30-16:00", "type": "transport", "text": "自驾前往昆明站北广场亚朵酒店（车程约30分钟，路费￥10）" },
+        { "id": "d1-s5", "time": "16:00-16:20", "type": "stay", "text": "酒店放行李 / 办理入住（若提前办理则在此项注明）" },
+        { "id": "d1-s6", "time": "16:20", "type": "attraction", "text": "出发打卡昆明老街、纸片楼（约15分钟）" },
+        { "id": "d1-s7", "time": "16:40", "type": "attraction", "text": "步行至黄公东街网红黄墙打卡" },
+        { "id": "d1-s8", "time": "17:40", "type": "attraction", "text": "逛翠湖公园（免费环湖）" },
+        { "id": "d1-s9", "time": "18:40", "type": "attraction", "text": "逛文化巷与文林街" }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-09-16",
+      "title": "昆明 → 大理（自驾/交通） · 大理游览",
+      "locations": ["昆明站北广场亚朵酒店","阿凯缇娅·安止樱落","双廊","文笔村"],
+      "schedule": [
+        { "id": "d2-s1", "time": "08:00", "type": "transport", "text": "酒店出发前往大理（可选车次/路线：A: 3h40 ￥305；B: 3h58 ￥203），预计到达时间约 11:55（视车次而定）" },
+        { "id": "d2-s2", "time": "中午/下午", "type": "stay", "text": "入住 阿凯缇娅·安止樱落（酒店提供免费公共停车场，管家会发定位）" },
+        { "id": "d2-s3", "time": "下午", "type": "food", "text": "古镇午餐（推荐：玫瑰乳扇等）；可选择南诏风情岛（双廊码头乘船往返47元/人，含船票与门票）" },
+        { "id": "d2-s4", "time": "傍晚", "type": "attraction", "text": "文笔村/渔灯夜游（建议19:30之后）" }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-09-17",
+      "title": "大理：双廊 · 喜洲 · 大理古镇",
+      "locations": ["双廊古镇","喜洲古镇","大理古镇"],
+      "schedule": [
+        { "id": "d3-s1", "time": "全天", "type": "attraction", "text": "双廊、喜洲、廊桥、S弯、龙龛码头、扎染体验（可选）" }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-09-18",
+      "title": "大理 → 丽江（自驾）",
+      "locations": ["阿凯缇娅·安止樱落","曼辰Mansion（丽江）"],
+      "schedule": [
+        { "id": "d4-s1", "time": "09:30", "type": "transport", "text": "出发前往丽江（驾车时长约 1h36m，路费￥74），预计到达 11:10" },
+        { "id": "d4-s2", "time": "中午/下午", "type": "stay", "text": "入住 曼辰Mansion 侘寂美学·花园度假酒店（私人停车场）" }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-09-19",
+      "title": "丽江 → 香格里拉 · 虎跳峡游览",
+      "locations": ["曼辰Mansion","虎跳峡","CRUE库里蓝屿川典藏·供氧观景酒店"],
+      "schedule": [
+        { "id": "d5-s1", "time": "08:00", "type": "transport", "text": "出发前往虎跳峡（车程约1h18m，路费￥38），预计到达 09:20" },
+        { "id": "d5-s2", "time": "09:20-11:00", "type": "attraction", "text": "虎跳峡游览（门票现场购票，成人45元/人，凭身份证）" },
+        { "id": "d5-s3", "time": "11:00", "type": "transport", "text": "前往 CRUE 库里蓝屿川典藏·供氧观景酒店（约1h36m，路费￥42）" },
+        { "id": "d5-s4", "time": "下午", "type": "stay", "text": "入住酒店并用午餐（阿珂顿巴餐厅）" }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2026-09-20",
+      "title": "普拉措国家公园 / 长江第一湾（可选）",
+      "locations": ["普拉措国家公园","长江第一湾"],
+      "schedule": [
+        { "id": "d6-s1", "time": "09:00", "type": "attraction", "text": "普拉措国家公园游览（建议游玩约3小时）" }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "2026-09-21",
+      "title": "丽江 · 玉龙雪山",
+      "locations": ["玉龙雪山","丽江雪川游客服务中心","冰川公园"],
+      "schedule": [
+        { "id": "d7-s1", "time": "08:00", "type": "transport", "text": "前往玉龙雪山（车程约25min），建议导航至 丽江雪川游客服务中心" },
+        { "id": "d7-s2", "time": "12:05-13:15", "type": "attraction", "text": "冰川公园（大索道下站，海拔约4680m），高海拔请注意保暖与防高反" }
+      ]
+    },
+    {
+      "day": 8,
+      "date": "2026-09-22",
+      "title": "返回昆明 · 还车 · 返程航班",
+      "locations": ["昆明长水机场"],
+      "schedule": [
+        { "id": "d8-s1", "time": "",
+          "type": "transport",
+          "text": "还车于昆明长水机场服务点（2026-09-22 19:00）；返程航班信息待补充."
+        }
+      ]
+    }
+  ],
+  "places": [],
+  "restaurants": [],
+  "bookingsAndTickets": [],
+  "ticketPlanning": {
+    "statusStorage": "local",
+    "statusStorageNote": "门票状态默认只保存在当前浏览器。",
+    "items": [
+      { "id": "t1", "name": "南诏风情岛（双廊）", "day": 2, "requirement": "往返船票+门票，约47 CNY/人，现场购票/可预订" },
+      { "id": "t2", "name": "虎跳峡门票", "day": 5, "requirement": "现场凭身份证购票，成人45 CNY/人" }
+    ]
+  },
+  "preTrip": {
+    "packingItems": [
+      { "id": "p1", "text": "购买氧气瓶（昆明/行程地）", "completed": false }
+    ],
+    "preparationsExplicitlyMentioned": [],
+    "missingNote": "部分航班号、部分酒店入住/退房时间与部分门票预订状态待补充。"
+  },
+  "mapLinks": {
+    "providedGoogleMapsLinks": [],
+    "note": "",
+    "cityLevelNavigationDisabled": false,
+    "navigationPolicy": {
+      "noNavigationTypes": ["flight","note","rest"],
+      "selfNavigationTypes": ["drive","return","transfer","check-in","check-out","restaurant","attraction","walk","hike"]
+    },
+    "navigationPlaces": []
+  },
+  "issuesAndUncertainties": [
+    "未提供出发/返程航班号；9/16 昆明→大理交通方式（已列为可选）；部分酒店入住/退房精确时间；地图经纬度待补充。"
+  ],
+  "map": {
+    "schemaVersion": "1.0-lite",
+    "mapMode": "template-auto",
+    "templateId": "auto",
+    "disclaimer": "本图仅表达地点的相对方位与路线顺序，不代表真实比例或精确地理边界。",
+    "places": [],
+    "routes": [],
+    "dailyRoutes": []
+  },
+  "ledger": {
+    "entries": [
+      { "id": "l1", "date": "2026-09-15", "amount": 10, "currency": "CNY", "category": "road_fee", "description": "昆明 15:30 自驾路费", "paid": false },
+      { "id": "l2", "date": "2026-09-15", "amount": 1675, "currency": "CNY", "category": "rental_car", "description": "租车订单 阿维塔07", "paid": true }
+    ]
+  }
+};
+
+    // Render header
+    document.getElementById('title').textContent = TRIP.metadata.title;
+    document.getElementById('dates').textContent = TRIP.trip.startDate + ' → ' + TRIP.trip.endDate + ' · ' + TRIP.trip.citiesAndAreas.join(' · ');
+
+    // Flights
+    const flightsEl = document.getElementById('flights-content');
+    TRIP.flights.forEach(f => {
+      const d = document.createElement('div');
+      d.innerHTML = `<dl><dt>出发</dt><dd>${f.departure.date} ${f.departure.time} — ${f.departure.city} (${f.departure.airportCode})</dd><dt>到达</dt><dd>${f.arrival.date} ${f.arrival.time} — ${f.arrival.city} (${f.arrival.airportCode})</dd><dt>航司 / 航班</dt><dd>${f.airline.name} ${f.flightNumber}</dd></dl>`;
+      flightsEl.appendChild(d);
+    });
+
+    // Rental
+    const rentalEl = document.getElementById('rental-content');
+    const r = TRIP.groundTransport.rentalCar;
+    rentalEl.innerHTML = `<div class="row"><div><strong>${r.company}</strong><div class="small">订单状态：${r.status}</div></div><div style="margin-left:auto;text-align:right"><div class="pill">¥${r.price.amount}</div></div></div><dl><dt>取车</dt><dd>${r.pickup.date} ${r.pickup.time} — ${r.pickup.location}</dd><dt>还车</dt><dd>${r.dropoff.date} ${r.dropoff.time} — ${r.dropoff.location}</dd><dt>下单</dt><dd>${r.orderPlaced}</dd></dl><div class="small">备注：${r.notes}</div>`;
+
+    // Accommodations
+    const aEl = document.getElementById('accom-content');
+    TRIP.accommodations.forEach(h => {
+      const div = document.createElement('div');
+      div.style.marginBottom = '8px';
+      div.innerHTML = `<strong>${h.name}</strong>${h.phone?'<div class="small">电话：'+h.phone+'</div>':''}<div class="small">${h.notes||''}</div>`;
+      aEl.appendChild(div);
+    });
+
+    // Days
+    const daysEl = document.getElementById('days-content');
+    TRIP.days.forEach(day=>{
+      const wrapper = document.createElement('div'); wrapper.className='day';
+      const h = document.createElement('h3'); h.textContent = 'Day ' + day.day + ' · ' + day.date + ' · ' + (day.title||''); h.style.margin='0 0 6px 0'; h.style.fontSize='16px';
+      wrapper.appendChild(h);
+      day.schedule.forEach(item=>{
+        const p = document.createElement('div'); p.innerHTML = `<div class="row"><div style="flex:1"><div><strong>${item.time||''}</strong> <span class="small">${item.type}</span></div><div>${item.text}</div></div></div>`; p.style.marginBottom='6px'; wrapper.appendChild(p);
+      });
+      daysEl.appendChild(wrapper);
+    });
+
+    // Tickets
+    const ticketsEl = document.getElementById('tickets-content');
+    TRIP.ticketPlanning.items.forEach(t=>{
+      const div = document.createElement('div'); div.style.marginBottom='6px'; div.innerHTML = `<strong>${t.name}</strong> <div class="small">Day ${t.day} · ${t.requirement}</div>`; ticketsEl.appendChild(div);
+    });
+
+    // Ledger
+    const ledgerEl = document.getElementById('ledger-content');
+    TRIP.ledger.entries.forEach(le=>{
+      const div = document.createElement('div'); div.style.marginBottom='6px'; div.innerHTML = `<div><strong>¥${le.amount}</strong> <span class="small">${le.date} · ${le.category} · ${le.paid? '已付':'未付'}</span></div><div class="small">${le.description}</div>`; ledgerEl.appendChild(div);
+    });
+  </script>
+</body>
+</html>
